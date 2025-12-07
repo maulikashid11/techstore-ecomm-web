@@ -5,9 +5,12 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { toast } from 'sonner'
+import { useDispatch } from 'react-redux'
+import { addAllProducts } from '@/store/slices/productSlice'
 
 
 const CreateProduct = () => {
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +32,16 @@ const CreateProduct = () => {
     const data = await res.json();
     if (data.success) {
       toast.success(data.message)
-      formElement.reset();
+      const res = await fetch('/api/product/getall', {
+        method: "GET",
+      })
+      const data = await res.json();
+      if (data.success) {
+        dispatch(addAllProducts(data.products.map(({ _id, name, category, price, image, stock }) => (
+          { id: _id, name, category, price, image, stock }
+        ))))
+      }
+      formElement.reset();  
     }
   }
 

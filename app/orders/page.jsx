@@ -21,8 +21,8 @@ const Page = () => {
             }
         }
         getOrders();
-    }, [])
-    console.log(orders)
+    }, [orders])
+    
 
     const getStatusColor = (status) => {
         switch (status) {

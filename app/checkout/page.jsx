@@ -43,7 +43,6 @@ const Page = () => {
     const pay = async () => {
         const { firstname, lastname, email, phone, street, city, state, zipcode } = shippingInfo;
         if (!(firstname || lastname || email || phone || street || city || state || zipcode)) {
-            console.log('hii')
             toast.error("Please fill all details");
             return;
         }
@@ -54,7 +53,6 @@ const Page = () => {
 
         const data = await res.json();
 
-        console.log(data);
         const options = {
             "key": process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
             "amount": Number.parseInt(totalPrice) * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -82,7 +80,6 @@ const Page = () => {
     };
 
     const handleChange = (e) => {
-        console.log(shippingInfo);
         setShippingInfo({ ...shippingInfo, [e.target.id]: e.target.value });
     }
     return (
@@ -95,7 +92,7 @@ const Page = () => {
                     <p className='text-gray-500 text-lg '>Complete your purchase</p>
                 </div>
                 <div className='bg-white py-18 px-6 flex flex-col lg:flex-row gap-5'>
-                    <div className='w-2/3'>
+                    <div className='lg:w-2/3 w-full'>
                         <div className='flex gap-2 items-center mb-5'>
                             <Truck className='w-7 h-7' />
                             <p className='text-gray-900 text-2xl'>Shipping Information</p>
@@ -140,7 +137,7 @@ const Page = () => {
                             <Button onClick={pay} className='w-full'>Continue to Payment</Button>
                         </div>
                     </div>
-                    <div className='bg-gray-100 rounded-xl p-10 w-1/3'>
+                    <div className='bg-gray-100 rounded-xl p-10 lg:w-1/3 w-full'>
                         <p className='text-3xl text-gray-900 mb-10'>Order Summary</p>
                         {
                             cartItems.map((item, index) => {

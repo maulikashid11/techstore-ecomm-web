@@ -6,9 +6,7 @@ export const DELETE = async (req)=>{
     
     try {   
         await connectDB();
-        console.log(id);
         const product = await  Product.findById(id);
-        console.log(product);
         if(!product){
             return Response.json({success:false,message:"Product not found"});
         }

@@ -10,7 +10,6 @@ import { toast } from 'sonner'
 const Products = () => {
     const { products } = useSelector((state) => state.product)
     const handleDelete = async (id) => {
-        console.log(id);
         const res = await fetch('/api/product/delete', {
             method: "DELETE",
             headers: {

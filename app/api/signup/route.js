@@ -5,7 +5,6 @@ import { auth } from "@clerk/nextjs/server";
 export async function POST() {
     await connectDB()
     const { userId  } = await auth();    
-    console.log(userId)
     await User.findOneAndUpdate(
         { userId },
         { userId },

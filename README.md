@@ -83,14 +83,13 @@ The application supports both **guest and registered users**, ensuring accessibi
 ---
 
 ## 🛠️ Tech Stack
-> *(Update if needed based on your actual setup)*
 
 - **Frontend:** React / Next.js / Tailwind CSS
-- **Backend:** Node.js / Express
-- **Database:** MongoDB / PostgreSQL
+- **Backend:** Node.js / Api's
+- **Database:** MongoDB 
 - **Payments:** Razorpay
 - **Authentication:** JWT / OAuth
-- **Hosting:** Vercel / AWS / Firebase
+- **Hosting:** Vercel
 
 ---
 

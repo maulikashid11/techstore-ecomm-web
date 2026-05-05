@@ -71,7 +71,7 @@ const page = () => {
                             transition={{ delay: 0.2 }}
                         >
                             <h2 className="text-3xl text-gray-900 mb-8 tracking-tight">Send us a message</h2>
-                            <form className="space-y-6">
+                            <form action={"https://formspree.io/f/xojrdrgv"} method="POST" className="space-y-6">
                                 <div className="grid sm:grid-cols-2 gap-6">
                                     <div>
                                         <Label htmlFor="firstName" className="text-gray-900 mb-2 block">
@@ -79,6 +79,7 @@ const page = () => {
                                         </Label>
                                         <Input
                                             id="firstName"
+                                            name="firstName"
                                             type="text"
                                             placeholder="John"
                                             className="rounded-xl border-gray-200"
@@ -90,6 +91,7 @@ const page = () => {
                                         </Label>
                                         <Input
                                             id="lastName"
+                                            name="lastName"
                                             type="text"
                                             placeholder="Doe"
                                             className="rounded-xl border-gray-200"
@@ -103,6 +105,7 @@ const page = () => {
                                     </Label>
                                     <Input
                                         id="email"
+                                        name="email"
                                         type="email"
                                         placeholder="john@example.com"
                                         className="rounded-xl border-gray-200"
@@ -115,6 +118,7 @@ const page = () => {
                                     </Label>
                                     <Input
                                         id="subject"
+                                        name="subject"
                                         type="text"
                                         placeholder="How can we help?"
                                         className="rounded-xl border-gray-200"
@@ -127,6 +131,7 @@ const page = () => {
                                     </Label>
                                     <Textarea
                                         id="message"
+                                        name="message"
                                         placeholder="Tell us more about your inquiry..."
                                         rows={6}
                                         className="rounded-xl border-gray-200"

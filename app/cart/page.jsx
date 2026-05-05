@@ -2,7 +2,7 @@
 import Footer from '@/components/base/Footer'
 import Navbar from '@/components/base/Navbar'
 import { Button } from '@/components/ui/button'
-import { addToCart, decreaseQuantity } from '@/store/slices/cartSlice'
+import { addToCart, clearCart, decreaseQuantity, deleteItem } from '@/store/slices/cartSlice'
 import { Minus, Plus, ShoppingBag, Trash2 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -19,7 +19,7 @@ const Page = () => {
     const dispatch = useDispatch();
     const [cartItems, setCartItems] = useState([]);
 
-    const router= useRouter();
+    const router = useRouter();
     const totalPrice = cartItems.reduce((sum, item) => (item.price * item.productCount) + sum, 0).toFixed(2)
     const shippingFee = totalPrice > 100 || totalPrice < 1 ? 0 : 15
     useEffect(() => {
@@ -101,7 +101,7 @@ const Page = () => {
                 <div className='w-full lg:w-3/4'>
                     <div className='flex items-center justify-between mb-5'>
                         <p className='text-gray-900 text-2xl tracking-tight'>Items</p>
-                        <Button variant={'ghost'} className='text-gray-500'>Clear all</Button>
+                        <Button onClick={()=>{dispatch(clearCart())}} variant={'ghost'} className='text-gray-500'>Clear all</Button>
                     </div>
                     <div>
                         {
@@ -113,7 +113,7 @@ const Page = () => {
                                     <div className='w-full'>
                                         <div className='flex justify-between'>
                                             <p className='text-gray-900 text-md tracking-tight'>{item?.name}</p>
-                                            <Button className='' variant={"ghost"}><Trash2 /></Button>
+                                            <Button onClick={()=>{dispatch(deleteItem(item.id))}} className='' variant={"ghost"}><Trash2 /></Button>
                                         </div>
                                         <p className='mb-2 text-gray-500'>{item?.category}</p>
                                         <div className='flex justify-between'>

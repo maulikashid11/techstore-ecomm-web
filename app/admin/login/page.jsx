@@ -94,7 +94,7 @@ export default function AdminLogin() {
                                 <Input
                                     id="password"
                                     type="password"
-                                    placeholder="••••••••"
+                                    placeholder="admin"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     required

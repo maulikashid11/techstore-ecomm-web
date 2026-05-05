@@ -31,7 +31,7 @@ const Navbar = () => {
                     <Link href={'/cart'}><Button variant={"ghost"} size={"icon"} className='text-gray-600 relative hover:text-black duration-300'>
                         <ShoppingBag />
                         <p className=''>{Object.entries(items).length > 0 && <span className="absolute top-0 right-0 bg-gray-900 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
-                            {Object.entries(items).length}
+                            {Object.values(items).reduce((acc,curr)=>acc+curr,0)}
                         </span>}</p>
                     </Button></Link>
                     {

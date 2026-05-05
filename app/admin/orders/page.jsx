@@ -9,7 +9,7 @@ const Page = () => {
     const [status, setStatus] = useState('pending')
     useEffect(() => {
         const getOrders = async () => {
-            const res = await fetch('/api/orders/getorders');
+            const res = await fetch('/api/orders/getallorders');
             const data = await res.json();
             if (data.success) {
                 setOrders(data.orders);
@@ -54,8 +54,8 @@ const Page = () => {
                     <tbody className="divide-y divide-gray-200">
                         {orders.map((order, index) => (
                             <tr key={index} className="bg-white">
-                                <td className="p-4 text-gray-900">{order.items.map((item)=>{
-                                    return <span className='text-gray-500 text-sm' key={item}>{item.name}*{item.productCount}, </span>
+                                <td className="p-4 text-gray-900">{order.items.map((item,idx)=>{
+                                    return <span className='text-gray-500 text-sm' key={idx}>{item.name}*{item.productCount}, </span>
                                 })}</td>
 
                                 <td className="p-4 text-gray-900">

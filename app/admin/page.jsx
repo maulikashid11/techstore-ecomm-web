@@ -10,7 +10,7 @@ const Page = () => {
     const {products} = useSelector((state)=>state.product)
     useEffect(() => {
         const getOrders = async () => {
-            const res = await fetch('/api/orders/getorders');
+            const res = await fetch('/api/orders/getallorders');
             const data = await res.json();
             if (data.success) {
                 setOrders(data.orders);
